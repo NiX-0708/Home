@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reached Home?</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1d2671, #c33764);
+      color: white;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 30px 40px;
+      border-radius: 16px;
+      text-align: center;
+      position: relative;
+      width: 340px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+
+    .note {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 25px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 220px;
+    }
+
+    /* CALL BUTTON */
+    .call-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 22px 40px;
+      font-size: 22px;
+      border: none;
+      border-radius: 14px;
+      background: #00e676;
+      color: #000;
+      cursor: pointer;
+      text-decoration: none;
+      width: 85%;
+      animation: glow 3s infinite;
+    }
+
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 0px rgba(0, 230, 118, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(0, 230, 118, 0.9);
+      }
+      100% {
+        box-shadow: 0 0 0px rgba(0, 230, 118, 0.4);
+      }
+    }
+
+    /* MESSAGE BUTTON */
+    .message-btn {
+      position: absolute;
+      top: 140px;
+      left: 100px;
+      padding: 10px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #ff5252;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>You reached home safely?</h1>
+    <p>Inform me by…</p>
+    <div class="note">
+      (Now we dont even need whatsapp or Instagram as third parties to call…🫢)
+    </div>
+
+    <div class="buttons">
+      <!-- Replace with YOUR number -->
+      <a class="call-btn" href="tel:+1234567890">📞 CALL</a>
+
+      <button class="message-btn" id="messageBtn">
+        💬 Message
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("messageBtn");
+
+    btn.addEventListener("mouseenter", () => {
+      const parent = btn.parentElement;
+      const maxX = parent.clientWidth - btn.offsetWidth;
+      const maxY = parent.clientHeight - btn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reached Home?</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #6d28d9, #3b0764 40%, #4a0404 100%);
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    /* floating glow blobs */
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: float 10s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    body::before {
+      background: #a855f7;
+      top: -60px;
+      left: -60px;
+    }
+
+    body::after {
+      background: #7f1d1d;
+      bottom: -80px;
+      right: -80px;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0px); }
+      to { transform: translateY(40px); }
+    }
+
+    .container {
+      max-width: 420px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 2.2rem;
+    }
+
+    .buttons {
+      position: relative;
+      height: 200px;
+    }
+
+    /* Call button */
+    .call-btn {
+      display: block;
+      width: 100%;
+      padding: 20px;
+      font-size: 1.25rem;
+      border-radius: 18px;
+      border: none;
+      background: linear-gradient(135deg, #c084fc, #ec4899);
+      color: #2e003e;
+      font-weight: bold;
+      text-decoration: none;
+      margin-bottom: 24px;
+      animation: heartbeat 1.4s infinite;
+      box-shadow: 0 10px 30px rgba(192,132,252,0.4);
+    }
+
+    @keyframes heartbeat {
+      0%   { transform: scale(1); }
+      14%  { transform: scale(1.08); }
+      28%  { transform: scale(1); }
+      42%  { transform: scale(1.08); }
+      70%  { transform: scale(1); }
+    }
+
+    /* Message button */
+    .message-btn {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 14px 24px;
+      font-size: 1rem;
+      border-radius: 14px;
+      border: 2px dashed #e9d5ff;
+      background: rgba(255,255,255,0.05);
+      color: #f3e8ff;
+      user-select: none;
+      backdrop-filter: blur(6px);
+    }
+
+    .footer {
+      margin-top: 44px;
+      font-size: 0.9rem;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>You reached home safely?</h1>
+    <p>Inform me by…</p>
+
+    <div class="buttons">
+      <a class="call-btn" href="tel:9766540512">📞 Call</a>
+      <div class="message-btn" id="dodgeBtn">💬 Message</div>
+    </div>
+
+    <div class="footer">
+      (Now we dont even need whatsapp or Instagram as third party apps to call…🫢)
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("dodgeBtn");
+
+    function dodge() {
+      const x = Math.random() * 220 - 110;
+      const y = Math.random() * 140 - 70;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    btn.addEventListener("mouseenter", dodge);
+    btn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      dodge();
+    });
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      dodge();
+    });
+  </script>
+</body>
+</html>
